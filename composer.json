@@ -3,6 +3,12 @@
     "name": "deljust/hwg",
     "type": "project",
     "description": "REST API peminjaman buku",
+    "authors": [
+        {
+            "name": "Justin",
+            "email": "justSMBOelot@gmail.com"
+        }
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.3",

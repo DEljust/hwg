@@ -13,7 +13,7 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-Login: `budi@mail.com` / `password`
+Login: `justSMBOelot@gmail.com` / `password`
 
 ## Endpoint
 

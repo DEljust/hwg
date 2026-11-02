@@ -13,8 +13,8 @@ class AuthTest extends TestCase
     public function test_user_can_register(): void
     {
         $this->postJson('/api/register', [
-            'name' => 'Budi',
-            'email' => 'budi@mail.com',
+            'name' => 'Justin',
+            'email' => 'justSMBOelot@gmail.com',
             'password' => 'password123',
             'password_confirmation' => 'password123',
         ])->assertCreated()->assertJsonStructure(['user', 'token']);
@@ -22,18 +22,18 @@ class AuthTest extends TestCase
 
     public function test_user_can_login(): void
     {
-        User::factory()->create(['email' => 'budi@mail.com']);
+        User::factory()->create(['email' => 'justSMBOelot@gmail.com']);
 
-        $this->postJson('/api/login', ['email' => 'budi@mail.com', 'password' => 'password'])
+        $this->postJson('/api/login', ['email' => 'justSMBOelot@gmail.com', 'password' => 'password'])
             ->assertOk()
             ->assertJsonStructure(['token']);
     }
 
     public function test_login_fails_with_wrong_password(): void
     {
-        User::factory()->create(['email' => 'budi@mail.com']);
+        User::factory()->create(['email' => 'justSMBOelot@gmail.com']);
 
-        $this->postJson('/api/login', ['email' => 'budi@mail.com', 'password' => 'salah'])
+        $this->postJson('/api/login', ['email' => 'justSMBOelot@gmail.com', 'password' => 'salah'])
             ->assertUnauthorized();
     }
 

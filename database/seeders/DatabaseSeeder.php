@@ -11,8 +11,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name' => 'Budi',
-            'email' => 'budi@mail.com',
+            'name' => 'Justin',
+            'email' => 'justSMBOelot@gmail.com',
         ]);
 
         $novel = Category::create(['name' => 'Novel']);
