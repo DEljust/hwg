@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return Category::orderBy('name')->get();
+        return Category::withCount('books')->orderBy('name')->get();
     }
 
     public function store(Request $request)
@@ -23,7 +23,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        return $category;
+        return $category->load('books');
     }
 
     public function update(Request $request, Category $category)
@@ -39,6 +39,10 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        if ($category->books()->exists()) {
+            return response()->json(['message' => 'Kategori masih dipakai oleh buku'], 422);
+        }
+
         $category->delete();
 
         return response()->noContent();
