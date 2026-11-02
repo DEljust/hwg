@@ -49,6 +49,10 @@ class BookController extends Controller
 
     public function destroy(Book $book)
     {
+        if ($book->loans()->whereNull('returned_at')->exists()) {
+            return response()->json(['message' => 'Buku masih dipinjam'], 422);
+        }
+
         $book->delete();
 
         return response()->noContent();
