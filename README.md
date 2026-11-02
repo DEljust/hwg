@@ -1,19 +1,19 @@
 # Library API
 
-REST API sederhana untuk peminjaman buku, dibuat dengan Laravel 13 + Sanctum.
+REST API sederhana untuk peminjaman buku, pakai Laravel 13 + Sanctum + SQLite.
 
-## Setup
+## Cara jalanin
 
 ```bash
 composer install
 cp .env.example .env
 php artisan key:generate
 touch database/database.sqlite
-php artisan migrate
+php artisan migrate --seed
 php artisan serve
 ```
 
-Default pakai SQLite. Kalau mau MySQL tinggal ganti `DB_*` di `.env`.
+API jalan di `http://localhost:8000/api`. Seeder bikin user `budi@mail.com` / `password` dan beberapa buku contoh.
 
 Jalankan test:
 
@@ -69,4 +69,3 @@ Aturan:
 - Tidak bisa pinjam kalau stok 0.
 - User tidak bisa pinjam buku yang sama dua kali sebelum dikembalikan.
 - Hanya peminjam yang bisa mengembalikan bukunya.
-- Pengurangan stok dilakukan langsung di query (`where stock > 0`) supaya aman dari request bersamaan.
