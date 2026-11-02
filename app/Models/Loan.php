@@ -6,17 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Loan extends Model
 {
-    protected $fillable = ['user_id', 'book_id', 'borrowed_at', 'returned_at'];
+    protected $fillable = ['book_id', 'borrowed_at'];
 
     protected $casts = [
         'borrowed_at' => 'datetime',
         'returned_at' => 'datetime',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function book()
     {
