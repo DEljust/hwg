@@ -36,4 +36,9 @@ class AuthTest extends TestCase
         $this->postJson('/api/login', ['email' => 'budi@mail.com', 'password' => 'salah'])
             ->assertUnauthorized();
     }
+
+    public function test_guest_gets_401_from_browser(): void
+    {
+        $this->get('/api/books')->assertUnauthorized();
+    }
 }
