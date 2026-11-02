@@ -28,8 +28,8 @@ class BookTest extends TestCase
             'category_id' => $this->category->id,
             'title' => 'Laskar Pelangi',
             'author' => 'Andrea Hirata',
-            'stock' => 3,
-        ])->assertCreated()->json('id');
+            'stock' => '3',
+        ])->assertCreated()->assertJsonPath('stock', 3)->json('id');
 
         $this->getJson('/api/books')->assertOk()->assertJsonPath('total', 1);
 
